@@ -7,21 +7,12 @@ Error allows you to create and manage errors throughout your application.
 
 Example Usage:
 
-require 'Error'
+error.create()
 
+error.display()
 
-error = Errors.new
-x = gets.chop
+error.count
 
-if x.kind_of? Integet
-	#run application
+error.erase()
 
-	puts("#{x} is a number")
-else
-	error.create("Invalid Data Type", "The data type you have entered is incorrect. Please enter an Integer in future.")
-end
-
-if error.count > 0
-	error.display('all')
-end
-
+error.export()
