@@ -79,4 +79,12 @@ class Error
 		end
 		return
 	end
+
+	def search(error_type)
+		$stored_errors.each{ |error|
+			if error[0] == error_type
+				puts("[" + error[2] + "] " + error[0] + ": " + error[1])
+			end
+		}
+	end
 end
