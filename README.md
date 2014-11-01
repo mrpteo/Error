@@ -16,3 +16,5 @@ error.count
 error.erase()
 
 error.export('error.log')
+
+error.search("Error Type")
