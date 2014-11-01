@@ -7,12 +7,12 @@ Error allows you to create and manage errors throughout your application.
 
 Example Usage:
 
-error.create()
+error.create("Error Type","Error description")
 
-error.display()
+error.display('all') or error.display(3)
 
 error.count
 
 error.erase()
 
-error.export()
+error.export('error.log')
