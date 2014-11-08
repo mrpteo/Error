@@ -5,7 +5,7 @@ This gem was designed to speed up and improve error handling through out your Ru
 
 Error allows you to create and manage errors throughout your application.
 
-Example Usage:
+###Example Usage:
 
 Call class:
 ```
