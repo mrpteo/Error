@@ -7,14 +7,16 @@ Error allows you to create and manage errors throughout your application.
 
 ###Example Usage:
 
-Call class:
 ```
   require 'error-handling'
 ```
+
+  Include error-handling into your application
 ```
 error = Error.new
 ```
-  Access the gem's class.
+  Access the error-handling gem
+
 ```
 error.create("Error Type","Error description")
 ```
