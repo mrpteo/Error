@@ -79,4 +79,22 @@ class Error
 		end
 		return
 	end
+
+	def load(file_name)
+		#varify the file does inface exist
+		if File.file?(file_name)
+
+			#open error file and read each line.
+			File.open(file_name, "r").each do |file_line|
+
+				#split the items to push individually into the errors array
+				error_split = file_line.split(" ")
+
+				#push errors into the $stored_errors array
+				$stored_errors.push([error_split[1].chop, error_split[2], error_split[0].slice(1..-1).chop])
+			end
+		else
+			puts("Load error: \"" + file_name + "\" does not exist.")
+		end
+	end
 end
