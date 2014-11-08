@@ -51,3 +51,7 @@ error.export('error.log')
   Exports all errors into an log file, file is specified within the first parameter.
   
   
+```
+error.load('error.log')
+```
+  Load previously exported errors into the application.
