@@ -55,3 +55,9 @@ error.export('error.log')
 error.load('error.log')
 ```
   Load previously exported errors into the application.
+
+
+```
+error.search('error type')
+```
+  Search saved errors for specific type, will only wok when error types are applied correctly.
