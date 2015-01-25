@@ -15,7 +15,7 @@ Error allows you to create and manage errors throughout your application.
   
   
 ```
-error = Error.new
+error = ErrorHandling.new
 ```
   Access the error-handling gem
   
@@ -28,9 +28,14 @@ error.create("Error Type","Error description")
   
   
 ```
-error.display('all') or error.display(3)
+error.display('all')
+
+error.display('3')
+
+error.display('last')
 ```
-  Displays errors currently saved. Usage: display('all') or pass integer e.g. display(2)
+
+  Displays errors currently saved. Usage: display('all'), display('last') or pass integer e.g. display(2)
   
   
 ```
@@ -53,8 +58,10 @@ error.export('error.log')
   
 ```
 error.load('error.log')
+
+error.load('error.log', 'confirm')
 ```
-  Load previously exported errors into the application.
+  Load previously exported errors into the application. Using the confirm parameter will provide uses with a small confirmation prompt informing them that the errors have all been loaded into the current application.
 
 
 ```
