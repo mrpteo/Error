@@ -1,4 +1,4 @@
-class Error
+class ErrorHandling
 	#global errors array
 	$stored_errors = Array.new()
 
@@ -17,21 +17,27 @@ class Error
 	end
 
 	def display(display_errors_ammount)
-		if display_errors_ammount.kind_of? Integer
-			if $stored_errors.length > display_errors_ammount
-				#display error
-				print($stored_errors[display_errors_ammount - 1][0] + ": " + $stored_errors[display_errors_ammount - 1][1])
+		if $stored_errors.length > 0
+			if display_errors_ammount.kind_of? Integer
+				if $stored_errors.length > display_errors_ammount
+					#display error
+					print($stored_errors[display_errors_ammount][0] + ": " + $stored_errors[display_errors_ammount][1])
+				else
+					puts("Invalid error syntax, invalid error number.")
+				end
+			elsif display_errors_ammount == 'last'
+				print($stored_errors[$stored_errors.length - 1][0] + ": " + $stored_errors[$stored_errors.length - 1][1])
+
 			else
-				puts("Invalid error syntax, invalid error number.")
+				if display_errors_ammount == 'all'
+					#loop through and disply the errors
+					$stored_errors.each{ |indiviual_error|
+						puts("[" + indiviual_error[2].to_s + "] " + indiviual_error[0] + ": " + indiviual_error[1])
+					}
+				end
 			end
 		else
-			if display_errors_ammount == 'all'
-
-				#loop through and disply the errors
-				$stored_errors.each{ |indiviual_error|
-					puts("[" + indiviual_error[2].to_s + "] " + indiviual_error[0] + ": " + indiviual_error[1])
-				}
-			end
+			puts("No errors are currently being stored,")
 		end
 	end
 
@@ -80,21 +86,27 @@ class Error
 		return
 	end
 
-	def load(file_name)
+	def load(*load_file)
 		#varify the file does inface exist
-		if File.file?(file_name)
+		if File.file?(load_file[0])
 
 			#open error file and read each line.
-			File.open(file_name, "r").each do |file_line|
+			File.open(load_file[0], "r").each do |file_line|
 
 				#split the items to push individually into the errors array
 				error_split = file_line.split(" ")
 
 				#push errors into the $stored_errors array
 				$stored_errors.push([error_split[1].chop, error_split[2], error_split[0].slice(1..-1).chop])
+
+				#check for confirmation parameter
+				if load_file[1] and load_file[1] == 'confirm'
+					puts("External errors file loaded.")
+				end
+
 			end
 		else
-			puts("Load error: \"" + file_name + "\" does not exist.")
+			puts("Load error: \"" + load_file[0] + "\" does not exist.")
 		end
 	end
 
