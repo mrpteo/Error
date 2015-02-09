@@ -54,7 +54,7 @@ class ErrorHandling
 		end
 
 		#create error log file
-		File.open(errors_export_name, "w") do |file|
+		File.open(errors_export_name, "a") do |file|
 
 			#loop through the errors putting them into the file
 			for i in 0..$stored_errors.length - 1
